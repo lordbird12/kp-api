@@ -251,3 +251,4 @@ Route::post('/upload_file', [UploadController::class, 'uploadFile']);
 //export pdf excel word
 Route::get('/excel_payslip', [FileController::class, 'excel_payslip']);
 Route::get('/pdf_payslip', [FileController::class, 'pdf_payslip']);
+Route::get('/downloadExcel', [FileController::class, 'downloadExcel']);

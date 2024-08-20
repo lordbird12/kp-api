@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ReserveExport;
 use App\Exports\salaryExport;
 use App\Models\DeductPaid;
 use App\Models\DeductType;
@@ -419,5 +420,19 @@ class FileController extends Controller
         $mpdf->AddPage();
         $mpdf->WriteHTML($content);
         $mpdf->Output('เงินเดือน.pdf', 'I');
+    }
+
+    public function downloadExcel()
+    {
+        $data = [];
+        $sel_doc = [];
+
+        try {
+            $result = new ReserveExport($data,$sel_doc);
+
+            return Excel::download($result, 'Reserve.xlsx');
+        } catch (\Exception $e) {
+            return $this->returnErrorData($e->getMessage(), 'Error downloading file');
+        }
     }
 }
