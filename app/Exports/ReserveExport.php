@@ -223,7 +223,7 @@ class Technician_Notice implements FromView, WithTitle, WithEvents
     }
 }
 
-class Purchase_sale implements FromView, WithTitle
+class Purchase_sale implements FromView, WithTitle, WithDrawings, WithEvents
 {
     protected $data;
 
@@ -241,9 +241,35 @@ class Purchase_sale implements FromView, WithTitle
         ]);
     }
 
+    public function drawings()
+    {
+        $drawing = new Drawing();
+        $drawing->setName('Logo');
+        $drawing->setPath(public_path('/images/logo/logo_kp.png'));
+        $drawing->setHeight(90);
+        $drawing->setCoordinates('B2');
+
+        return $drawing;
+    }
+
     public function title(): string
     {
         return 'สัญญาซื้อ-ขาย';
+    }
+    public function registerEvents(): array
+    {
+        return [
+            AfterSheet::class => function (AfterSheet $event) {
+                $event->sheet->getDelegate()->getStyle('A1:S100')->getFont()->setName('Angsana New');
+                $event->sheet->getStyle('B34:L34')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('B41:L41')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('B42:L42')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+
+                $event->sheet->getStyle('A35:A42')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('L35:L42')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+
+            },
+        ];
     }
 }
 
