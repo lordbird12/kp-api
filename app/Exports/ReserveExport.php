@@ -28,16 +28,49 @@ class ReserveExport implements WithMultipleSheets
         // dd($this->data);
         $sheets = [];
 
-        $sheets[] = new namelist($this->data);
-        $sheets[] = new booking($this->data);
-        $sheets[] = new Condition($this->data);
-        $sheets[] = new Technician_Notice($this->data);
-        $sheets[] = new Purchase_sale($this->data);
-        $sheets[] = new Customer_check($this->data);
-        $sheets[] = new Mechanic_check($this->data);
-        $sheets[] = new Delivery_note($this->data);
-        $sheets[] = new Warranty_card($this->data);
-        $sheets[] = new Finance_confirmation($this->data);
+        foreach ($this->sel_doc as $sheetNumber) {
+            switch ($sheetNumber) {
+                case 1:
+                    $sheets[] = new namelist($this->data);
+                    break;
+                case 2:
+                    $sheets[] = new booking($this->data);
+                    break;
+                case 3:
+                    $sheets[] = new Condition($this->data);
+                    break;
+                case 4:
+                    $sheets[] = new Technician_Notice($this->data);
+                    break;
+                case 5:
+                    $sheets[] = new Purchase_sale($this->data);
+                    break;
+                case 6:
+                    $sheets[] = new Customer_check($this->data);
+                    break;
+                case 7:
+                    $sheets[] = new Mechanic_check($this->data);
+                    break;
+                case 8:
+                    $sheets[] = new Delivery_note($this->data);
+                    break;
+                case 9:
+                    $sheets[] = new Warranty_card($this->data);
+                    break;
+                case 10:
+                    $sheets[] = new Finance_confirmation($this->data);
+                    break;
+                case 11:
+                    $sheets[] = new Csr_before($this->data);
+                    break;
+                case 12:
+                    $sheets[] = new Csr_after($this->data);
+                    break;
+                default:
+                    // สามารถเพิ่มเงื่อนไขเพิ่มเติมหากจำเป็น
+                    break;
+            }
+        }
 
         return $sheets;
     }
@@ -530,10 +563,10 @@ class Finance_confirmation implements FromView, WithTitle, WithDrawings, WithEve
     {
         $drawing = new Drawing();
         $drawing->setName('Logo');
-        $drawing->setPath(public_path('/images/kp/logo_kp2.png'));
-        $drawing->setHeight(80);
-        $drawing->setCoordinates('I1');
-        $drawing->setOffsetx(20);
+        $drawing->setPath(public_path('/images/kp/logo_kp3.png'));
+        $drawing->setHeight(70);
+        $drawing->setCoordinates('B2');
+        $drawing->setOffsetx(30);
         $drawing->setOffsety(10);
 
 
@@ -544,6 +577,82 @@ class Finance_confirmation implements FromView, WithTitle, WithDrawings, WithEve
     public function title(): string
     {
         return 'ใบคอนเฟิร์มไฟแนนท์';
+    }
+    public function registerEvents(): array
+    {
+        return [
+            AfterSheet::class => function (AfterSheet $event) {
+                $event->sheet->getDelegate()->getStyle('A1:S100')->getFont()->setName('Angsana New');
+
+                // $event->sheet->getStyle('B16:M16')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+
+
+                // $event->sheet->getStyle('A17:A22')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+
+            },
+        ];
+    }
+}
+class Csr_before implements FromView, WithTitle, WithEvents
+{
+    protected $data;
+
+    public function __construct(array $data)
+    {
+        $this->data = $data;
+    }
+
+    public function view(): View
+    {
+
+        // dd($aggregatedData);
+        return view('export.Csr_before', [
+            'data' => $this->data,
+        ]);
+    }
+
+
+    public function title(): string
+    {
+        return 'CSR ก่อนส่งมอบ';
+    }
+    public function registerEvents(): array
+    {
+        return [
+            AfterSheet::class => function (AfterSheet $event) {
+                $event->sheet->getDelegate()->getStyle('A1:S100')->getFont()->setName('Tahoma');
+
+                $event->sheet->getStyle('B16:M16')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+
+
+                $event->sheet->getStyle('A17:A22')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+
+            },
+        ];
+    }
+}
+class Csr_after implements FromView, WithTitle, WithEvents
+{
+    protected $data;
+
+    public function __construct(array $data)
+    {
+        $this->data = $data;
+    }
+
+    public function view(): View
+    {
+
+        // dd($aggregatedData);
+        return view('export.Csr_after', [
+            'data' => $this->data,
+        ]);
+    }
+
+
+    public function title(): string
+    {
+        return 'CSR หลังส่งมอบ';
     }
     public function registerEvents(): array
     {

@@ -34,7 +34,7 @@
     <tr>
         <td></td>
         <td colspan="7" style="font-weight: bold; font-size: 11px; text-align:center; "></td>
-        <td style="font-size: 11px; background-color: #b7dee8">ทีมช่าง</td>
+        <td style="font-size: 11px; background-color: #b7dee8;">ทีมช่าง</td>
         <td colspan="3" style="font-weight: bold; font-size: 11px; text-align:center; background-color: #b7dee8">0</td>
     </tr>
     <tr>

@@ -422,13 +422,13 @@ class FileController extends Controller
         $mpdf->Output('เงินเดือน.pdf', 'I');
     }
 
-    public function downloadExcel()
+    public function downloadExcel(Request $request)
     {
         $data = [];
-        $sel_doc = [];
+        $select_doc = $request->input('sheets', []);
 
         try {
-            $result = new ReserveExport($data,$sel_doc);
+            $result = new ReserveExport($data,$select_doc);
 
             return Excel::download($result, 'Reserve.xlsx');
         } catch (\Exception $e) {
