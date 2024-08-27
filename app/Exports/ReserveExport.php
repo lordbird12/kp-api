@@ -273,7 +273,7 @@ class Purchase_sale implements FromView, WithTitle, WithDrawings, WithEvents
     }
 }
 
-class Customer_check implements FromView, WithTitle
+class Customer_check implements FromView, WithTitle, WithDrawings, WithEvents
 {
     protected $data;
 
@@ -290,14 +290,39 @@ class Customer_check implements FromView, WithTitle
             'data' => $this->data,
         ]);
     }
+    public function drawings()
+    {
+        $drawing = new Drawing();
+        $drawing->setName('Logo');
+        $drawing->setPath(public_path('/images/logo/logo_kp2.png'));
+        $drawing->setHeight(60);
+        $drawing->setCoordinates('E1');
+        $drawing->setOffsetx(20);
+
+        return $drawing;
+    }
 
     public function title(): string
     {
         return 'ใบเช็ครถลูกค้า';
     }
+    public function registerEvents(): array
+    {
+        return [
+            AfterSheet::class => function (AfterSheet $event) {
+                $event->sheet->getDelegate()->getStyle('A1:S100')->getFont()->setName('Angsana New');
+                $event->sheet->getStyle('A10:L10')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('A1:C1')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('A2:C2')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('A2')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+
+                $event->sheet->getStyle('L10')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+            },
+        ];
+    }
 }
 
-class Mechanic_check implements FromView, WithTitle
+class Mechanic_check implements FromView, WithTitle, WithDrawings, WithEvents
 {
     protected $data;
 
@@ -314,9 +339,96 @@ class Mechanic_check implements FromView, WithTitle
             'data' => $this->data,
         ]);
     }
+    public function drawings()
+    {
+        $drawing = new Drawing();
+        $drawing->setName('Logo');
+        $drawing->setPath(public_path('/images/logo/logo_kp2.png'));
+        $drawing->setHeight(60);
+        $drawing->setCoordinates('E1');
+        $drawing->setOffsetx(20);
+
+        return $drawing;
+    }
+
 
     public function title(): string
     {
         return 'ใบเช็ครถของช่าง';
+    }
+    public function registerEvents(): array
+    {
+        return [
+            AfterSheet::class => function (AfterSheet $event) {
+                $event->sheet->getDelegate()->getStyle('A1:S100')->getFont()->setName('Angsana New');
+                $event->sheet->getStyle('A11:L11')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('A12:L12')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('A22:L22')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('A23:L23')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('A32:L32')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('A33:L33')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('A40:L40')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('A42:L42')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('A43:L43')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('A54:L54')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('A55:L55')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+
+                $event->sheet->getStyle('L10:L12')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('L23')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('L33')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('L55')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('L41:L43')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+
+                $event->sheet->getStyle('B63:L63')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('A64:L64')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('A65:L65')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('A66:L66')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('A67:L67')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+
+            },
+        ];
+    }
+}
+class Delivery_note implements FromView, WithTitle, WithDrawings, WithEvents
+{
+    protected $data;
+
+    public function __construct(array $data)
+    {
+        $this->data = $data;
+    }
+
+    public function view(): View
+    {
+
+        // dd($aggregatedData);
+        return view('export.Delivery_note', [
+            'data' => $this->data,
+        ]);
+    }
+    public function drawings()
+    {
+        $drawing = new Drawing();
+        $drawing->setName('Logo');
+        $drawing->setPath(public_path('/images/logo/logo_kp_add.png'));
+        $drawing->setHeight(120);
+        $drawing->setCoordinates('B2');
+
+        return $drawing;
+    }
+
+
+    public function title(): string
+    {
+        return 'ใบเช็ครถของช่าง';
+    }
+    public function registerEvents(): array
+    {
+        return [
+            AfterSheet::class => function (AfterSheet $event) {
+                $event->sheet->getDelegate()->getStyle('A1:S100')->getFont()->setName('Tahoma');
+
+            },
+        ];
     }
 }
