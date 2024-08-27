@@ -35,6 +35,9 @@ class ReserveExport implements WithMultipleSheets
         $sheets[] = new Purchase_sale($this->data);
         $sheets[] = new Customer_check($this->data);
         $sheets[] = new Mechanic_check($this->data);
+        $sheets[] = new Delivery_note($this->data);
+        $sheets[] = new Warranty_card($this->data);
+        $sheets[] = new Finance_confirmation($this->data);
 
         return $sheets;
     }
@@ -94,7 +97,7 @@ class booking implements FromView, WithTitle, WithDrawings, WithEvents
     {
         $drawing = new Drawing();
         $drawing->setName('Logo');
-        $drawing->setPath(public_path('/images/logo/logo_kp.png'));
+        $drawing->setPath(public_path('/images/kp/logo_kp.png'));
         $drawing->setHeight(90);
         $drawing->setCoordinates('B1');
 
@@ -142,7 +145,7 @@ class Condition implements FromView, WithTitle, WithDrawings, WithEvents
     {
         $drawing = new Drawing();
         $drawing->setName('Logo');
-        $drawing->setPath(public_path('/images/logo/logo_kp.png'));
+        $drawing->setPath(public_path('/images/kp/logo_kp.png'));
         $drawing->setHeight(60);
         $drawing->setCoordinates('B1');
         $drawing->setOffsetX(20);
@@ -245,7 +248,7 @@ class Purchase_sale implements FromView, WithTitle, WithDrawings, WithEvents
     {
         $drawing = new Drawing();
         $drawing->setName('Logo');
-        $drawing->setPath(public_path('/images/logo/logo_kp.png'));
+        $drawing->setPath(public_path('/images/kp/logo_kp.png'));
         $drawing->setHeight(90);
         $drawing->setCoordinates('B2');
 
@@ -294,7 +297,7 @@ class Customer_check implements FromView, WithTitle, WithDrawings, WithEvents
     {
         $drawing = new Drawing();
         $drawing->setName('Logo');
-        $drawing->setPath(public_path('/images/logo/logo_kp2.png'));
+        $drawing->setPath(public_path('/images/kp/logo_kp2.png'));
         $drawing->setHeight(60);
         $drawing->setCoordinates('E1');
         $drawing->setOffsetx(20);
@@ -343,7 +346,7 @@ class Mechanic_check implements FromView, WithTitle, WithDrawings, WithEvents
     {
         $drawing = new Drawing();
         $drawing->setName('Logo');
-        $drawing->setPath(public_path('/images/logo/logo_kp2.png'));
+        $drawing->setPath(public_path('/images/kp/logo_kp2.png'));
         $drawing->setHeight(60);
         $drawing->setCoordinates('E1');
         $drawing->setOffsetx(20);
@@ -410,9 +413,74 @@ class Delivery_note implements FromView, WithTitle, WithDrawings, WithEvents
     {
         $drawing = new Drawing();
         $drawing->setName('Logo');
-        $drawing->setPath(public_path('/images/logo/logo_kp_add.png'));
+        $drawing->setPath(public_path('/images/kp/logo_kp_add.png'));
         $drawing->setHeight(120);
         $drawing->setCoordinates('B2');
+
+        $drawing2 = new Drawing();
+        $drawing2->setPath(public_path('/images/kp/pic10,000.png'));
+        $drawing2->setCoordinates('G33');
+        $drawing2->setHeight(180);
+
+        return [$drawing, $drawing2];
+    }
+
+
+    public function title(): string
+    {
+        return 'ใบส่งมอบ';
+    }
+    public function registerEvents(): array
+    {
+        return [
+            AfterSheet::class => function (AfterSheet $event) {
+                $event->sheet->getDelegate()->getStyle('A1:S100')->getFont()->setName('Tahoma');
+
+                $event->sheet->getStyle('I10:L10')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+                $event->sheet->getStyle('I20:L20')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+                $event->sheet->getStyle('B21:G21')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+                $event->sheet->getStyle('I21:L21')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+                $event->sheet->getStyle('B31:G31')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+                $event->sheet->getStyle('I31:L31')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+
+                $event->sheet->getStyle('H11:H21')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+                $event->sheet->getStyle('L11:L21')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+                $event->sheet->getStyle('A22:A31')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+                $event->sheet->getStyle('G22:G31')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+                $event->sheet->getStyle('H22:H31')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+                $event->sheet->getStyle('L22:L31')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+
+            },
+        ];
+    }
+}
+class Warranty_card implements FromView, WithTitle, WithDrawings, WithEvents
+{
+    protected $data;
+
+    public function __construct(array $data)
+    {
+        $this->data = $data;
+    }
+
+    public function view(): View
+    {
+
+        // dd($aggregatedData);
+        return view('export.Warranty_card', [
+            'data' => $this->data,
+        ]);
+    }
+    public function drawings()
+    {
+        $drawing = new Drawing();
+        $drawing->setName('Logo');
+        $drawing->setPath(public_path('/images/kp/logo_kp2.png'));
+        $drawing->setHeight(80);
+        $drawing->setCoordinates('I1');
+        $drawing->setOffsetx(20);
+        $drawing->setOffsety(10);
+
 
         return $drawing;
     }
@@ -420,13 +488,73 @@ class Delivery_note implements FromView, WithTitle, WithDrawings, WithEvents
 
     public function title(): string
     {
-        return 'ใบเช็ครถของช่าง';
+        return 'ใบรับประกัน';
     }
     public function registerEvents(): array
     {
         return [
             AfterSheet::class => function (AfterSheet $event) {
                 $event->sheet->getDelegate()->getStyle('A1:S100')->getFont()->setName('Tahoma');
+
+                $event->sheet->getStyle('B16:M16')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('B22:M22')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('B24:M24')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('B31:M31')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+
+                $event->sheet->getStyle('A17:A22')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('A25:A31')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('M17:M22')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('M25:M31')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+            },
+        ];
+    }
+}
+class Finance_confirmation implements FromView, WithTitle, WithDrawings, WithEvents
+{
+    protected $data;
+
+    public function __construct(array $data)
+    {
+        $this->data = $data;
+    }
+
+    public function view(): View
+    {
+
+        // dd($aggregatedData);
+        return view('export.Finance_confirmation', [
+            'data' => $this->data,
+        ]);
+    }
+    public function drawings()
+    {
+        $drawing = new Drawing();
+        $drawing->setName('Logo');
+        $drawing->setPath(public_path('/images/kp/logo_kp2.png'));
+        $drawing->setHeight(80);
+        $drawing->setCoordinates('I1');
+        $drawing->setOffsetx(20);
+        $drawing->setOffsety(10);
+
+
+        return $drawing;
+    }
+
+
+    public function title(): string
+    {
+        return 'ใบคอนเฟิร์มไฟแนนท์';
+    }
+    public function registerEvents(): array
+    {
+        return [
+            AfterSheet::class => function (AfterSheet $event) {
+                $event->sheet->getDelegate()->getStyle('A1:S100')->getFont()->setName('Angsana New');
+
+                $event->sheet->getStyle('B16:M16')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+
+
+                $event->sheet->getStyle('A17:A22')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
 
             },
         ];
