@@ -622,11 +622,6 @@ class Csr_before implements FromView, WithTitle, WithEvents
             AfterSheet::class => function (AfterSheet $event) {
                 $event->sheet->getDelegate()->getStyle('A1:S100')->getFont()->setName('Tahoma');
 
-                $event->sheet->getStyle('B16:M16')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
-
-
-                $event->sheet->getStyle('A17:A22')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
-
             },
         ];
     }
@@ -658,13 +653,7 @@ class Csr_after implements FromView, WithTitle, WithEvents
     {
         return [
             AfterSheet::class => function (AfterSheet $event) {
-                $event->sheet->getDelegate()->getStyle('A1:S100')->getFont()->setName('Angsana New');
-
-                $event->sheet->getStyle('B16:M16')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
-
-
-                $event->sheet->getStyle('A17:A22')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
-
+                $event->sheet->getDelegate()->getStyle('A1:S100')->getFont()->setName('Tahoma');
             },
         ];
     }

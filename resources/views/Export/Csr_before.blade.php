@@ -1,7 +1,6 @@
-<table border="1" style="border-collapse: collapse;">
+<table>
     <tr>
-        <td colspan="7" style="font-size: 11px; font-weight: bold; text-align: center;">
-            แบบประเมินความพึงพอใจลูกค้าผู้รับบริการ</td>
+        <td colspan="7" style="font-size: 11px; font-weight: bold; text-align: center;">แบบประเมินความพึงพอใจลูกค้าผู้รับบริการ</td>
     </tr>
     <tr>
         <td style="width: 88px;"></td>
@@ -13,24 +12,24 @@
         <td style="width: 82px;"></td>
     </tr>
     <tr>
-        <td style="font-size: 11px;">ยี่ห้อรถ</td>
+        <td style="font-size: 11px; border: 1px solid black;">ยี่ห้อรถ</td>
         <td style="border: 1px solid black;"></td>
         <td></td>
-        <td style="font-size: 11px;">วันที่ประเมิน</td>
+        <td style="font-size: 11px; border: 1px solid black;">วันที่ประเมิน</td>
         <td style="border: 1px solid black;" colspan="3"></td>
     </tr>
     <tr>
-        <td style="font-size: 11px;">ทะเบียน</td>
+        <td style="font-size: 11px; border: 1px solid black;">ทะเบียน</td>
         <td style="border: 1px solid black;"></td>
         <td></td>
-        <td style="font-size: 11px;">ชื่อ - สกุลผู้ซื้อ</td>
+        <td style="font-size: 11px; border: 1px solid black;">ชื่อ - สกุลผู้ซื้อ</td>
         <td style="border: 1px solid black;" colspan="3"></td>
     </tr>
     <tr>
         <td></td>
         <td></td>
         <td></td>
-        <td style="font-size: 11px;">เบอร์โทร</td>
+        <td style="font-size: 11px; border: 1px solid black;">เบอร์โทร</td>
         <td style="border: 1px solid black;" colspan="3"></td>
     </tr>
     <tr>
@@ -119,5 +118,156 @@
         <td style="border: 1px solid black;"></td>
         <td style="border: 1px solid black;"></td>
         <td></td>
+    </tr>
+    <tr>
+        <td style="height: 10px;"></td>
+    </tr>
+    <tr>
+        <td colspan="7" style="font-size: 11px; font-weight: bold; font-style: italic;">ด้านการบริการงานช่าง</td>
+    </tr>
+    <tr>
+        <td colspan="2" style="font-size: 11px; border: 1px solid black;">2.4 ช่างให้ความรู้ ความเข้าใจในสินค้า</td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td style="height: 10px;"></td>
+    </tr>
+    <tr>
+        <td colspan="7" style="font-size: 11px; font-weight: bold; font-style: italic;">ด้านเอกสาร</td>
+    </tr>
+    <tr>
+        <td colspan="2" style="font-size: 11px; border: 1px solid black;">2.5 เอกสารที่ได้ครบถ้วนถูกต้อง</td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="2" style="font-size: 11px; border: 1px solid black;">2.5.1 เอกสารสัญญาซื้อ-ขาย</td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="2" style="font-size: 11px; border: 1px solid black;">2.5.2 เอกสารรับประกันหลังการขาย</td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="2" style="font-size: 11px; border: 1px solid black;">2.5.3 เอกสารแนะนำผู้ซื้อแนะนำผู้ซื้อ</td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td style="height: 10px;"></td>
+    </tr>
+    <tr>
+        <td colspan="7" style="font-size: 11px; font-weight: bold; font-style: italic;">ด้านสถานที่ของผู้ให้บริการ</td>
+    </tr>
+    <tr>
+        <td colspan="2" style="font-size: 11px; border: 1px solid black;">2.6 ห้องรับรอง  สถานที่นั่งรอ </td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="2" style="font-size: 11px; border: 1px solid black;">2.7 ความสะอาดของสถานที่ให้บริการ</td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="2" style="font-size: 11px; border: 1px solid black;">2.8 อาหารว่าง เครื่องดื่ม </td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td style="border: 1px solid black;"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td style="height: 10px;"></td>
+    </tr>
+    <tr>
+        <td colspan="2" style="font-size: 11px; font-weight: bold; font-style: italic; border: 1px solid black;">ตอนที่ 4 จากการใช้บริการในครั้งนี้  ท่านจะแนะนำเพื่อน</td>
+        <td style="border: 1px solid black; text-align: center; font-size: 11px;">แนะนำ</td>
+        <td></td>
+        <td style="border: 1px solid black; text-align: center; font-size: 11px;">ไม่แนะนำ</td>
+        <td></td>
+        <td style="border: 1px solid black; text-align: center; font-size: 11px;">ไม่แนะใจ</td>
+    </tr>
+    <tr>
+        <td colspan="2" style="font-size: 11px; font-weight: bold; font-style: italic; border: 1px solid black;">คนรู้จัก หรือญาติสนิทมิตรสหายมาใช้บริการที่นี่หรือไม่</td>
+        <td style="border: 1px solid black;"></td>
+        <td style=""></td>
+        <td style="border: 1px solid black;"></td>
+        <td style=""></td>
+        <td style="border: 1px solid black;"></td>
+    </tr>
+    <tr>
+        <td></td>
+    </tr>
+    <tr>
+        <td style="font-size: 11px; font-weight: bold; ">ตอนที่ 5  ข้อเสนอแนะ</td>
+    </tr>
+    <tr>
+        <td colspan="7" style="border-bottom: 1px solid black;"></td>
+    </tr>
+    <tr>
+        <td colspan="7" style="border-bottom: 1px solid black;"></td>
+    </tr>
+    <tr>
+        <td colspan="7" style="border-bottom: 1px solid black;"></td>
+    </tr>
+    <tr>
+        <td style="height: 8px;"></td>
+    </tr>
+    <tr>
+        <td ></td>
+    </tr>
+    <tr>
+        <td style="font-size: 11px;">ลงชื่อ</td>
+        <td style="border-bottom: 1px solid black;"></td>
+        <td></td>
+        <td style="font-size: 11px;">ลงชื่อ</td>
+        <td colspan="3" style="border-bottom: 1px solid black;"></td>
+    </tr>
+    <tr>
+        <td style="font-size: 11px;"></td>
+        <td style="font-size: 11px;  text-align: center;">ผู้ดำเนินการสอบถาม</td>
+        <td></td>
+        <td style="font-size: 11px;"></td>
+        <td colspan="3" style="font-size: 11px; text-align: center;">ผู้ประเมิน/ผู้ให้ข้อมูลในการประเมิน</td>
+    </tr>
+    <tr>
+        <td></td>
+    </tr>
+    <tr>
+        <td style="font-size: 11px;">วันที่คีย์ลงระบบ</td>
+        <td style="border-bottom: 1px solid black;"></td>
     </tr>
 </table>
