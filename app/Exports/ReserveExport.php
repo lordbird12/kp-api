@@ -66,6 +66,9 @@ class ReserveExport implements WithMultipleSheets
                 case 12:
                     $sheets[] = new Csr_after($this->data);
                     break;
+                case 13:
+                    $sheets[] = new Broker_Certificate($this->data);
+                    break;
                 default:
                     // สามารถเพิ่มเงื่อนไขเพิ่มเติมหากจำเป็น
                     break;
@@ -654,6 +657,69 @@ class Csr_after implements FromView, WithTitle, WithEvents
         return [
             AfterSheet::class => function (AfterSheet $event) {
                 $event->sheet->getDelegate()->getStyle('A1:S100')->getFont()->setName('Tahoma');
+            },
+        ];
+    }
+}
+
+class Broker_Certificate implements FromView, WithTitle, WithEvents
+{
+    protected $data;
+
+    public function __construct(array $data)
+    {
+        $this->data = $data;
+    }
+
+    public function view(): View
+    {
+
+        // dd($aggregatedData);
+        return view('export.Broker_certificate', [
+            'data' => $this->data,
+        ]);
+    }
+
+
+    public function title(): string
+    {
+        return 'ใบนายหน้า';
+    }
+    public function registerEvents(): array
+    {
+        return [
+            AfterSheet::class => function (AfterSheet $event) {
+                $event->sheet->getDelegate()->getStyle('A1:S100')->getFont()->setName('Angsana New');
+
+                $event->sheet->getStyle('B16:G16')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+                $event->sheet->getStyle('B23:G23')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+
+                $event->sheet->getStyle('H8:L8')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('H9:L9')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('H10:L10')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('H11:L11')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('H12:L12')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('H13:L13')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('H14:L14')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('H15:L15')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+
+                $event->sheet->getStyle('A24:L24')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('A25:L25')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('A34:L34')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+
+                $event->sheet->getStyle('H17:L17')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('H18:L18')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('H19:L19')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+
+                $event->sheet->getStyle('A17:A23')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+                $event->sheet->getStyle('G17:G23')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+
+                $event->sheet->getStyle('G9:G15')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('I9:I15')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('L9:L15')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+
+                $event->sheet->getStyle('F25:F34')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('L25:L34')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
             },
         ];
     }
