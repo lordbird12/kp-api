@@ -133,6 +133,7 @@
         <td></td>
         <td colspan="2" style="font-size: 14px; text-align: center; vertical-align: middle; font-weight: bold;">
             ปัญหาที่พบในการจัดไฟแนนท์ (ถ้ามี)</td>
+        <td style="font-size: 14px; text-align: center; vertical-align: middle;">:</td>
     </tr>
     <tr>
         <td></td>
