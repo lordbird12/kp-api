@@ -1306,17 +1306,35 @@ class Reservation implements FromView, WithTitle, WithEvents
         return [
             AfterSheet::class => function (AfterSheet $event) {
                 $event->sheet->getDelegate()->getStyle('A1:S100')->getFont()->setName('Angsana New'); //Tahoma,Angsana New
-                $event->sheet->getStyle('A11:L11')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('B12:L12')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('B31:L31')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('B36:L36')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
 
-                $event->sheet->getStyle('L10:L12')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('A32:A36')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('L32:L36')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
 
-
+                $event->sheet->getStyle('I3:L3')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('J4:L4')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('C5:G5')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('C6:G6')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('D8:G8')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('I8:L8')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('D9:G9')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('I9:L9')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('I10:L10')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('D14:G14')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('J14:L14')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('D15:G15')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('J15:L15')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('C28:E28')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('I28:L28')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('I30:L30')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
             },
         ];
     }
 }
 
-class vat_from implements FromView, WithTitle, WithDrawings, WithEvents
+class vat_from implements FromView, WithTitle, WithEvents
 {
     protected $data;
 
@@ -1333,17 +1351,6 @@ class vat_from implements FromView, WithTitle, WithDrawings, WithEvents
             'data' => $this->data,
         ]);
     }
-    public function drawings()
-    {
-        $drawing = new Drawing();
-        $drawing->setName('Logo');
-        $drawing->setPath(public_path('/images/kp/logo_kp2.png'));
-        $drawing->setHeight(60);
-        $drawing->setCoordinates('E1');
-        $drawing->setOffsetx(20);
-
-        return $drawing;
-    }
 
 
     public function title(): string
@@ -1355,12 +1362,35 @@ class vat_from implements FromView, WithTitle, WithDrawings, WithEvents
     {
         return [
             AfterSheet::class => function (AfterSheet $event) {
-                $event->sheet->getDelegate()->getStyle('A1:S100')->getFont()->setName('Angsana New'); //Tahoma,Angsana New
-                $event->sheet->getStyle('A11:L11')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getDelegate()->getStyle('A1:S100')->getFont()->setName('Tahoma'); //Tahoma,Angsana New
+                $event->sheet->getStyle('A2:M2')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('A3:M3')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
 
-                $event->sheet->getStyle('L10:L12')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('M3')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('F5:F22')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
 
-                $event->sheet->getStyle('B63:L63')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('C6:E6')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('J6:M6')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('C7:E7')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('J7:M7')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('C8:E8')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('J8:M8')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('C9:E9')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('J9:M9')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('C10:E10')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('J10:M10')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('C11:E11')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('J11:M11')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('C12:E12')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('J12:M12')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('C16:E16')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('J16:M16')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('C17:E17')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('J17:M17')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('C18:E18')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('J18:M18')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('C20:E20')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                $event->sheet->getStyle('J20:M20')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
 
             },
         ];
@@ -1390,8 +1420,9 @@ class Car_Notification implements FromView, WithTitle, WithDrawings, WithEvents
         $drawing->setName('Logo');
         $drawing->setPath(public_path('/images/kp/logo_kp2.png'));
         $drawing->setHeight(60);
-        $drawing->setCoordinates('E1');
+        $drawing->setCoordinates('B1');
         $drawing->setOffsetx(20);
+        $drawing->setOffsetx(40);
 
         return $drawing;
     }
@@ -1406,12 +1437,12 @@ class Car_Notification implements FromView, WithTitle, WithDrawings, WithEvents
     {
         return [
             AfterSheet::class => function (AfterSheet $event) {
-                $event->sheet->getDelegate()->getStyle('A1:S100')->getFont()->setName('Angsana New'); //Tahoma,Angsana New
-                $event->sheet->getStyle('A11:L11')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getDelegate()->getStyle('A1:S100')->getFont()->setName('Tahoma'); //Tahoma,Angsana New
+                // $event->sheet->getStyle('A11:L11')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
 
-                $event->sheet->getStyle('L10:L12')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                // $event->sheet->getStyle('L10:L12')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
 
-                $event->sheet->getStyle('B63:L63')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                // $event->sheet->getStyle('B63:L63')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
 
             },
         ];
@@ -1441,9 +1472,9 @@ class Sheet1 implements FromView, WithTitle, WithDrawings, WithEvents
         $drawing->setName('Logo');
         $drawing->setPath(public_path('/images/kp/logo_kp2.png'));
         $drawing->setHeight(60);
-        $drawing->setCoordinates('E1');
+        $drawing->setCoordinates('B1');
         $drawing->setOffsetx(20);
-
+        $drawing->setOffsetx(40);
         return $drawing;
     }
 
@@ -1458,18 +1489,18 @@ class Sheet1 implements FromView, WithTitle, WithDrawings, WithEvents
         return [
             AfterSheet::class => function (AfterSheet $event) {
                 $event->sheet->getDelegate()->getStyle('A1:S100')->getFont()->setName('Angsana New'); //Tahoma,Angsana New
-                $event->sheet->getStyle('A11:L11')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                // $event->sheet->getStyle('A11:L11')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
 
-                $event->sheet->getStyle('L10:L12')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                // $event->sheet->getStyle('L10:L12')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
 
-                $event->sheet->getStyle('B63:L63')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
+                // $event->sheet->getStyle('B63:L63')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
 
             },
         ];
     }
 }
 
-class Booking_conditions implements FromView, WithTitle, WithDrawings, WithEvents
+class Booking_conditions implements FromView, WithTitle, WithEvents
 {
     protected $data;
 
@@ -1486,18 +1517,6 @@ class Booking_conditions implements FromView, WithTitle, WithDrawings, WithEvent
             'data' => $this->data,
         ]);
     }
-    public function drawings()
-    {
-        $drawing = new Drawing();
-        $drawing->setName('Logo');
-        $drawing->setPath(public_path('/images/kp/logo_kp2.png'));
-        $drawing->setHeight(60);
-        $drawing->setCoordinates('E1');
-        $drawing->setOffsetx(20);
-
-        return $drawing;
-    }
-
 
     public function title(): string
     {
@@ -1508,13 +1527,25 @@ class Booking_conditions implements FromView, WithTitle, WithDrawings, WithEvent
     {
         return [
             AfterSheet::class => function (AfterSheet $event) {
-                $event->sheet->getDelegate()->getStyle('A1:S100')->getFont()->setName('Angsana New'); //Tahoma,Angsana New
-                $event->sheet->getStyle('A11:L11')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getDelegate()->getStyle('A1:S100')->getFont()->setName('Tahoma'); //Tahoma,Angsana New
+                $event->sheet->getStyle('A1:H1')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('A2:H2')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('B3:H3')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('B4:H4')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('B12:H12')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('B13:H13')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('B14:H14')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('B15:H15')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('B16:H16')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('B17:H17')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
 
-                $event->sheet->getStyle('L10:L12')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
-
-                $event->sheet->getStyle('B63:L63')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_HAIR);
-
+                $event->sheet->getStyle('H2')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('D15')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('D17')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('A4:A17')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('H4:H17')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('D4:D13')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle('F4:F12')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
             },
         ];
     }

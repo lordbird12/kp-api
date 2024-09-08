@@ -52,6 +52,7 @@
         <td style="font-size: 11px; background-color: #00b050; font-weight: bold;"></td>
     </tr>
     <tr>
+        <td></td>
         <td style="font-size: 11px; border: 1px solid black; ">ค่าโอน ภาษี</td>
         <td style="font-size: 11px; border: 1px solid black; ">ฟรี</td>
         <td></td>
@@ -75,6 +76,7 @@
         <td style="font-size: 12px;  font-weight: bold;background-color: #fabf8f; "></td>
     </tr>
     <tr>
+        <td></td>
         <td style="font-size: 11px;  border: 1px solid black; ">ค่าGPS</td>
         <td style="font-size: 11px;  border: 1px solid black; ">ฟรี</td>
         <td></td>
@@ -104,6 +106,7 @@
         <td></td>
     </tr>
     <tr>
+        <td></td>
         <td style="font-size: 11px;  border: 1px solid black; ">หักเงินจอง</td>
         <td style="font-size: 11px;  border: 1px solid black; "></td>
         <td></td>
